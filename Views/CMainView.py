@@ -1,5 +1,7 @@
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QFrame, QVBoxLayout, QHBoxLayout, QPushButton
+from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtCore import QSize
 from Controls.CTabPivot import CTabPivot
 from Views.CPreparingWindow import CPreparingWindow
 
@@ -49,15 +51,29 @@ class CMainView(QFrame):
         vbox_left_menu_layout.setAlignment(QtCore.Qt.AlignVCenter)
         hbox_content_layout.addLayout(vbox_left_menu_layout)
 
+        # for i in range(8):
+        #     left_menu_button = QFrame()
+        #     button_name = "LeftMenuButton" + str(i+1)
+        #     button_icon_path = "url(Resources/images/icons/icon-%d.png)" % (i+1)
+        #     left_menu_button.setObjectName(button_name)
+        #     left_menu_button.setFixedSize(48, 48)
+        #     left_menu_button.setStyleSheet("""QFrame#%s {background-image: %s;}
+        #                                     QFrame#%s:pressed {background-image: url(Resources/images/icons/icon-1.png)
+        #                                     """ % (button_name, button_icon_path, button_name))
+        #     vbox_left_menu_layout.addWidget(left_menu_button)
+        #     vbox_left_menu_layout.addSpacing(1)
+
         for i in range(8):
-            left_menu_button = QFrame()
+            left_menu_button = QPushButton()
             button_name = "LeftMenuButton" + str(i+1)
             button_icon_path = "url(Resources/images/icons/icon-%d.png)" % (i+1)
+
+
             left_menu_button.setObjectName(button_name)
             left_menu_button.setFixedSize(48, 48)
-            left_menu_button.setStyleSheet("""QFrame#%s {background-image: %s;}
-                                            QFrame#%s:pressed {background-image: url(Resources/images/icons/icon-1.png)
-                                            """ % (button_name, button_icon_path, button_name))
+            left_menu_button.setIconSize(QSize(46, 46))
+            left_menu_button.setStyleSheet("""QPushButton#%s {background-image: %s;}
+                                             QPushButton#%s:pressed {background-image: %s;}""" % (button_name, button_icon_path, button_name, button_icon_path))
             vbox_left_menu_layout.addWidget(left_menu_button)
             vbox_left_menu_layout.addSpacing(1)
 
